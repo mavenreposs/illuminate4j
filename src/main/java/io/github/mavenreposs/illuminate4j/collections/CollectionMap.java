@@ -1,7 +1,5 @@
 package io.github.mavenreposs.illuminate4j.collections;
 
-import cn.dscmall.component.facades.DSC_Collection;
-
 import java.util.HashMap;
 import java.util.Map;
 
