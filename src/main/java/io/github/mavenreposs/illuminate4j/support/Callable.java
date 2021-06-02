@@ -1,6 +1,8 @@
 package io.github.mavenreposs.illuminate4j.support;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class Callable<T> {
 
@@ -17,5 +19,16 @@ public class Callable<T> {
         return method.invoke(bean);
     }
 
+    protected static  <T> boolean exists(T bean, String fun) throws Exception {
+        Method[] methods = bean.getClass().getMethods();
+        long count = Arrays.stream(methods).filter(new Predicate<Method>() {
+            @Override
+            public boolean test(Method method) {
+                return method.getName().equals(fun);
+            }
+        }).count();
+
+        return count > 0;
+    }
 
 }
